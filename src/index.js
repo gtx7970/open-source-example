@@ -1,5 +1,5 @@
-const uniqueRandomArray = require('unique-random-array')
-const starWarsNames = require('./names.json')
+import uniqueRandomArray from 'unique-random-array'
+import starWarsNames from './names.json'
 
 const getRandomItems = uniqueRandomArray(starWarsNames)
 
@@ -15,9 +15,7 @@ const random = num => {
   }
 }
 
-module.exports = {
+export default {
   all: starWarsNames,
   random
 }
-
-

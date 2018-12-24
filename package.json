@@ -2,19 +2,45 @@
   "name": "open-source-example",
   "version": "1.0.0",
   "description": "open-source-work-flow-try",
-  "main": "src/index.js",
-  "repository": "git@github.com:gtx7970/open-source-example.git",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gtx7970/open-source-example.git"
+  },
   "author": "zdy <zdy07015394@gmail.com>",
   "license": "MIT",
   "scripts": {
     "lint": "eslint .",
-    "test": "jest --config ./jest.config.js"
+    "prebuild": "rimraf dist",
+    "build": "babel src --out-dir dist --ignore 'src/*.test.js'",
+    "build:umd": "rollup --config",
+    "test": "jest --config ./jest.config.js",
+    "validate": "yarn lint && yarn test"
   },
   "dependencies": {
     "unique-random-array": "^1.0.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
     "eslint": "^5.10.0",
-    "jest": "^23.6.0"
+    "ghooks": "^2.0.4",
+    "jest": "^23.6.0",
+    "regenerator-runtime": "^0.13.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.68.1",
+    "rollup-plugin-babel": "^4.1.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "yarn validate"
+    }
   }
 }

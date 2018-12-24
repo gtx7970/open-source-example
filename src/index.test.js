@@ -1,4 +1,4 @@
-const { all, random } = require('./index')
+import starWarsNames from './index'
 
 expect.extend({
   toBeAllString(received) {
@@ -19,24 +19,24 @@ expect.extend({
 describe('starWars-name', () => {
   describe('all', () => {
     test('all el should be string', () => {
-      expect(all).toBeAllString()
+      expect(starWarsNames.all).toBeAllString()
     })
     test('should contain `Luke Skywalker', () => {
-      expect(all).toContain('Luke Skywalker')
+      expect(starWarsNames.all).toContain('Luke Skywalker')
     })
   })
 
   describe('random', () => {
     test('should return a random item from all', () => {
-      let item = random()
-      expect(all).toContain(item)
+      let item = starWarsNames.random()
+      expect(starWarsNames.all).toContain(item)
     })
 
     test('should return an array of random items if passed a number', () => {
-      let randomItems = random(3)
+      let randomItems = starWarsNames.random(3)
       expect(randomItems.length).toBe(3)
       randomItems.forEach(el => {
-        expect(all).toContain(el)
+        expect(starWarsNames.all).toContain(el)
       })
     })
   })
