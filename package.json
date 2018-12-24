@@ -12,6 +12,7 @@
   "scripts": {
     "lint": "eslint .",
     "prebuild": "rimraf dist",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
     "build": "babel src --out-dir dist --ignore 'src/*.test.js'",
     "build:umd": "rollup --config",
     "test": "jest --config ./jest.config.js",
@@ -27,6 +28,7 @@
     "@babel/register": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
+    "codecov": "^3.1.0",
     "eslint": "^5.10.0",
     "ghooks": "^2.0.4",
     "jest": "^23.6.0",
